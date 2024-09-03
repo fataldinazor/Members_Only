@@ -23,7 +23,7 @@ message_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 user_id INTEGER,
 message_title VARCHAR(127) NOT NULL,
 message VARCHAR(500) NOT NULL,
-message_time TIMESTAMPTZ,
+message_time TIMESTAMPTZ ,
 FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 `;

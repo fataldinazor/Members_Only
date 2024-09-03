@@ -1,0 +1,14 @@
+<header>
+    <h2>Name of the Website</h2>
+    <nav>
+        <ul>
+            <li><a href="/messages">messages</a></li>
+            <%if(user){%>
+                <a href="/log-out">Logout</a>
+            <%}else{%>
+                <a href="/sign-up">Sign-Up</a>
+                <a href="/log-in">Log-in</a>
+            <%}%>
+        </ul>
+    </nav>
+</header>

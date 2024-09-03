@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Message</title>
+  </head>
+  <body>
+    <%- include("headers.ejs")%>
+    <form action="/create-message" method="POST">
+        <h2>Create Message</h2>
+        <input type="hidden" id="currentDateTime" name="dateTime"> 
+        <label for="title">Title:
+            <input type="text" name="title">
+        </label>
+        <label for="message">Message:
+            <input type="text" name="message">
+        </label>
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        const currentDateTime= new Date().toISOString();
+        document.getElementById('currentDateTime').value=currentDateTime;
+    </script>
+  </body>
+</html>

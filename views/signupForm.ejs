@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Sign Up</title>
+  </head>
+  <body>
+    <%- include('headers.ejs')%>
+    <h2><%=title%></h2>
+    <p>Arleady have a account?<a href="/log-in">Login here</a></p>
+    <%if(errors && errors.length>0){%>
+    <div class="errors">
+      <%errors.forEach((error)=>{%>
+      <ul>
+        <li><%=error.msg%></li>
+      </ul>
+      <%})%>
+    </div>
+    <%}%>
+    <form action="/sign-up" method="POST">
+      <label for="firstname"
+        >First Name:
+        <input type="text" id="firstname" name="fname" />
+      </label>
+      <label for="lastname"
+        >Last Name:
+        <input type="text" id="lastname" name="lname" />
+      </label>
+      <label for="username"
+        >Username:
+        <input type="text" id="username" name="username" />
+      </label>
+      <label for="password"
+        >Password:
+        <input type="password" id="password" name="password" />
+      </label>
+      <label for="confirmPassword"
+        >Confirm Password:
+        <input type="password" id="confirmPassword" name="confirmPassword" />
+      </label>
+      <input type="hidden" value="false" name="isMember" />
+      <input type="hidden" value="false" name="isAdmin" />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Messages</title>
+  </head>
+  <body>
+    <%-include('headers.ejs')%>
+    <div class="messageContainer">
+      <%messages.forEach((message)=>{%>
+      <div class="messageCard">
+        <h4><%=message.message_title%></h4>
+        <p><%=message.message%></p>
+        <%const dateTime=new Date(message.message_time)%> 
+        <%const date = dateTime.toLocaleString("en-GB", {weekday: "long", year: "numeric", month: "short", day: "numeric"});%>
+        <%const time = dateTime.toLocaleTimeString("en-GB", {hour12: true, hour: "2-digit", minute: "2-digit", });%>
+        <p><%=date%> at <%=time%></p>
+        <%if(user){%>
+            by <%=message.username%>
+        <%}else{%>
+            by Anonymous
+        <%}%>
+      </div>
+      <%})%>
+    </div>
+  </body>
+</html>
