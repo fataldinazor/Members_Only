@@ -52,7 +52,7 @@ async function getAllMessages() {
   SELECT users.username, user_messages.message_id, user_messages.user_id, user_messages.message_title, user_messages.message, user_messages.message_time FROM
   user_messages 
   INNER JOIN users 
-  ON user_messages.user_id=users.user_id;`;
+  ON user_messages.user_id=users.user_id ORDER BY user_messages.message_time DESC;`;
   const { rows } = await pool.query(query);
   return rows;
 }
