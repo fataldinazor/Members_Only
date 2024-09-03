@@ -6,6 +6,7 @@ const pool = require("./db/pool");
 const app = express();
 const userRouters = require("./routes/router");
 const PORT = process.env.PORT;
+const path = require('path');
 
 app.set("view engine", "ejs");
 
@@ -26,6 +27,7 @@ app.use(
 app.use(passport.session());
 app.use(flash());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname,'public')));
 
 app.use((req, res, next) => {
   res.locals.user = req.user;

@@ -19,6 +19,16 @@ const validateUser=[
     body("lname").trim()
     .isAlpha().withMessage(`Last Name ${alphaErr}`)
     .isLength({min:1, max:15}).withMessage(`Last Name ${lengthErr}`),
+    body('username').exists().withMessage(`Please enter username`),
+    body("password").exists().withMessage(`Please enter the password`).bail()
+    .isStrongPassword({
+        minLength:8,
+        minLowercase:1,
+        minUppercase:1,
+        minNumbers:1,
+        minSymbols:1
+    }).withMessage(`'Password must be at least 8 characters long and include at least one lowercase letter, one uppercase letter, one number, and one symbol.' `),
+    body('confirmPassword').exists().withMessage(`Confirm your Password`)
 ]
 
 const checkUsernameExist=body("username").custom(async value=>{

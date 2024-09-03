@@ -1,14 +1,34 @@
-<header>
-    <h2>Name of the Website</h2>
+<header class="bg-gray-800 text-white p-4">
+  <div class="container mx-auto flex justify-between items-center">
+    <h2 class="text-2xl font-bold">MembersClub</h2>
     <nav>
-        <ul>
-            <li><a href="/messages">messages</a></li>
-            <%if(user){%>
-                <a href="/log-out">Logout</a>
-            <%}else{%>
-                <a href="/sign-up">Sign-Up</a>
-                <a href="/log-in">Log-in</a>
-            <%}%>
-        </ul>
+      <ul class="flex space-x-4 items-center">
+        <li>
+          <a href="/messages" class="hover:text-gray-300">All Messages</a>
+        </li>
+        <% if (user) { %> <% if (user.is_member === false) { %>
+        <li>
+          <a href="/get-membership" class="hover:text-gray-300"
+            >Become Member</a
+          >
+        </li>
+        <% } %> <% if (user.is_admin === false) { %>
+        <li>
+          <a href="/get-admin" class="hover:text-gray-300">Become Admin</a>
+        </li>
+        <% } %>
+        <li>
+          <a href="/create-message" class="hover:text-gray-300"
+            >Create Message</a
+          >
+        </li>
+        <li class="font-semibold text-blue-400"><%= user.username %></li>
+        <li><a href="/log-out" class="text-red-500 hover:text-red-300">Logout</a></li>
+        <% } else { %>
+        <li><a href="/sign-up" class="hover:text-gray-300">Sign-Up</a></li>
+        <li><a href="/log-in" class=" hover:text-gray-300">Log-in</a></li>
+        <% } %>
+      </ul>
     </nav>
+  </div>
 </header>

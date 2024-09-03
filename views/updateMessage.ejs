@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../styles/output.css">
+    <title>Update Message</title>
+</head>
+<body class="bg-gray-100 font-sans">
+    <%-include('headers.ejs')%>
+    <div class="container mx-auto p-6 max-w-lg">
+    
+    <% if (errors && errors.length > 0) { %>
+      <div class="errors bg-red-100 text-red-700 p-4 rounded-lg mb-4">
+        <ul class="list-disc list-inside">
+          <% errors.forEach((error) => { %>
+            <li><%= error.msg %></li>
+          <% }) %>
+        </ul>
+      </div>
+      <% } %>
+        <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Update your Message</h2>
+        <form action="/messages/<%= message.message_id %>/update" method="POST" class="bg-white p-6 rounded-lg shadow-md">
+            <input type="hidden" id="currentDateTime" name="<%= message.message_time %>">
+
+            <div class="mb-4">
+                <label for="title" class="block text-gray-700 font-semibold mb-2">Title:</label>
+                <input type="text" name="title" value="<%= message.message_title %>" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="message" class="block text-gray-700 font-semibold mb-2">Message:</label>
+                <textarea name="message" id="message" rows="4" cols="50" placeholder="Enter your Message (under 300 characters)" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required><%= message.message %></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Update</button>
+        </form>
+    </div>
+</body>
+</html>

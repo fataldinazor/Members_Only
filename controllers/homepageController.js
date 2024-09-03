@@ -3,7 +3,7 @@ const homepageController=(req,res)=>{
         res.redirect("/messages");
     }
     else{
-        res.redirect("log-in")
+        res.redirect("/sign-up")
     }
 }
 
