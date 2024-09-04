@@ -1,4 +1,3 @@
-const db = require("../db/queries");
 const pool =require("../db/pool");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
